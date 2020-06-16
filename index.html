@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        #app {
+            font-family: Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            color: #2c3e50;
+            width: 600px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <fieldset>
+        <legend>Settings</legend>
+        <div>
+            <select v-model="startPoint">
+                <option value="">Select Place</option>
+                <option v-for="(item, key) in optionList" :key="key" :value="item">{{ item }}</option>
+            </select>
+        </div>
+        <div>
+            <input type="range" v-model.number="distance" min="0" max="1000" step="50">{{ distance }} km
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Results</legend>
+        <ol>
+            <li v-for="(item, key) in result" :key="key">{{ item.name }} ({{ item.distance }} km)</li>
+        </ol>
+    </fieldset>
+</div>
+<script src="./app.js"></script>
+</body>
+</html>
